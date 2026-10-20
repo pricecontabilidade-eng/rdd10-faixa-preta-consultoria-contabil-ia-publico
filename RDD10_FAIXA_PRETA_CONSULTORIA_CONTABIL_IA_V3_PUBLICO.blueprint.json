@@ -1,0 +1,1828 @@
+{
+  "name": "Consultoria Contabil com IA - Make + Supabase + Camada Ouro | Faixa Preta RDD10+",
+  "flow": [
+    {
+      "id": 1,
+      "module": "datastore:SearchRecord",
+      "version": 1,
+      "parameters": {
+        "limit": null,
+        "datastore": 0,
+        "continueWhenNoRes": false
+      },
+      "mapper": {
+        "sort": [],
+        "filter": [],
+        "mappAbleLimit": ""
+      },
+      "metadata": {
+        "designer": {
+          "x": 1865,
+          "y": 236,
+          "name": "BUSCA DADOS PROCESSADOS DA PRATA"
+        },
+        "setupValidation": {
+          "result": {
+            "valid": true,
+            "fields": []
+          },
+          "version": 1,
+          "configuration": "424c1edfcb8918b4"
+        },
+        "restore": {
+          "parameters": {
+            "datastore": {
+              "label": "CONFIGURAR_DATA_STORE_NO_MAKE"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "datastore",
+            "type": "datastore",
+            "label": "Data store",
+            "required": true
+          },
+          {
+            "name": "continueWhenNoRes",
+            "type": "boolean",
+            "label": "Continue the execution of the route even if the module returns no results"
+          },
+          {
+            "name": "limit",
+            "type": "uinteger",
+            "label": "Limit"
+          }
+        ],
+        "expect": [
+          {
+            "name": "filter",
+            "type": "filter",
+            "label": "Filter",
+            "options": {
+              "store": [
+                {
+                  "label": "cnpj_emitente",
+                  "value": "cnpj_emitente",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "xml_raw",
+                  "value": "xml_raw",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "origem",
+                  "value": "origem",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "received_at",
+                  "value": "received_at",
+                  "filter": "date:*"
+                },
+                {
+                  "label": "processed",
+                  "value": "processed",
+                  "filter": "boolean:*"
+                },
+                {
+                  "label": "processed_at",
+                  "value": "processed_at",
+                  "filter": "date:*"
+                },
+                {
+                  "label": "chave_nfe",
+                  "value": "chave_nfe",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "numero_nfe",
+                  "value": "numero_nfe",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "serie_nfe",
+                  "value": "serie_nfe",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "data_emissao",
+                  "value": "data_emissao",
+                  "filter": "date:*"
+                },
+                {
+                  "label": "cnpj_destinatario",
+                  "value": "cnpj_destinatario",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "nome_emitente",
+                  "value": "nome_emitente",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "nome_destinatario",
+                  "value": "nome_destinatario",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "uf_emitente",
+                  "value": "uf_emitente",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "uf_destinatario",
+                  "value": "uf_destinatario",
+                  "filter": "text:*"
+                },
+                {
+                  "label": "valor_total_nfe",
+                  "value": "valor_total_nfe",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_produtos",
+                  "value": "valor_produtos",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_icms",
+                  "value": "valor_icms",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_pis",
+                  "value": "valor_pis",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_cofins",
+                  "value": "valor_cofins",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_ipi",
+                  "value": "valor_ipi",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_cbs",
+                  "value": "valor_cbs",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "valor_ibs",
+                  "value": "valor_ibs",
+                  "filter": "number:*"
+                },
+                {
+                  "label": "itens",
+                  "value": "itens",
+                  "filter": "array:*"
+                }
+              ],
+              "operators": [
+                {
+                  "label": "Basic operators",
+                  "options": [
+                    {
+                      "label": "Exists",
+                      "value": "exist"
+                    },
+                    {
+                      "label": "Does not exist",
+                      "value": "notexist"
+                    }
+                  ]
+                },
+                {
+                  "label": "Text operators",
+                  "options": [
+                    {
+                      "label": "Equal to",
+                      "value": "text:equal"
+                    },
+                    {
+                      "label": "Equal to (case insensitive)",
+                      "value": "text:equal:ci"
+                    },
+                    {
+                      "label": "Not equal to",
+                      "value": "text:notequal"
+                    },
+                    {
+                      "label": "Not equal to (case insensitive)",
+                      "value": "text:notequal:ci"
+                    },
+                    {
+                      "label": "Contains",
+                      "value": "text:contain"
+                    },
+                    {
+                      "label": "Contains (case insensitive)",
+                      "value": "text:contain:ci"
+                    },
+                    {
+                      "label": "Does not contain",
+                      "value": "text:notcontain"
+                    },
+                    {
+                      "label": "Does not contain (case insensitive)",
+                      "value": "text:notcontain:ci"
+                    },
+                    {
+                      "label": "Starts with",
+                      "value": "text:startwith"
+                    },
+                    {
+                      "label": "Starts with (case insensitive)",
+                      "value": "text:startwith:ci"
+                    },
+                    {
+                      "label": "Does not start with",
+                      "value": "text:notstartwith"
+                    },
+                    {
+                      "label": "Does not start with (case insensitive)",
+                      "value": "text:notstartwith:ci"
+                    },
+                    {
+                      "label": "Ends with",
+                      "value": "text:endwith"
+                    },
+                    {
+                      "label": "Ends with (case insensitive)",
+                      "value": "text:endwith:ci"
+                    },
+                    {
+                      "label": "Does not end with",
+                      "value": "text:notendwith"
+                    },
+                    {
+                      "label": "Does not end with (case insensitive)",
+                      "value": "text:notendwith:ci"
+                    }
+                  ]
+                },
+                {
+                  "label": "Numeric operators",
+                  "options": [
+                    {
+                      "label": "Equal to",
+                      "value": "number:equal"
+                    },
+                    {
+                      "label": "Not equal to",
+                      "value": "number:notequal"
+                    },
+                    {
+                      "label": "Greater than",
+                      "value": "number:greater"
+                    },
+                    {
+                      "label": "Less than",
+                      "value": "number:less"
+                    },
+                    {
+                      "label": "Greater than or equal to",
+                      "value": "number:greaterorequal"
+                    },
+                    {
+                      "label": "Less than or equal to",
+                      "value": "number:lessorequal"
+                    }
+                  ]
+                },
+                {
+                  "label": "Datetime operators",
+                  "options": [
+                    {
+                      "label": "Equal to",
+                      "value": "date:equal"
+                    },
+                    {
+                      "label": "Not equal to",
+                      "value": "date:notequal"
+                    },
+                    {
+                      "label": "Later than",
+                      "value": "date:greater"
+                    },
+                    {
+                      "label": "Earlier than",
+                      "value": "date:less"
+                    },
+                    {
+                      "label": "Later than or equal to",
+                      "value": "date:greaterorequal"
+                    },
+                    {
+                      "label": "Earlier than or equal to",
+                      "value": "date:lessorequal"
+                    }
+                  ]
+                },
+                {
+                  "label": "Boolean operators",
+                  "options": [
+                    {
+                      "label": "Equal to",
+                      "value": "boolean:equal"
+                    },
+                    {
+                      "label": "Not equal to",
+                      "value": "boolean:notequal"
+                    },
+                    {
+                      "label": "Is true",
+                      "value": "boolean:istrue"
+                    },
+                    {
+                      "label": "Is false",
+                      "value": "boolean:isfalse"
+                    }
+                  ]
+                },
+                {
+                  "label": "Array operators",
+                  "options": [
+                    {
+                      "label": "Contains",
+                      "value": "array:contain"
+                    },
+                    {
+                      "label": "Contains (case insensitive)",
+                      "value": "array:contain:ci"
+                    },
+                    {
+                      "label": "Does not contain",
+                      "value": "array:notcontain"
+                    },
+                    {
+                      "label": "Does not contain (case insensitive)",
+                      "value": "array:notcontain:ci"
+                    },
+                    {
+                      "label": "Array length equal to",
+                      "value": "array:equal"
+                    },
+                    {
+                      "label": "Array length not equal to",
+                      "value": "array:notequal"
+                    },
+                    {
+                      "label": "Array length greater than",
+                      "value": "array:greater"
+                    },
+                    {
+                      "label": "Array length less than",
+                      "value": "array:less"
+                    },
+                    {
+                      "label": "Array length greater than or equal to",
+                      "value": "array:greaterorequal"
+                    },
+                    {
+                      "label": "Array length less than or equal to",
+                      "value": "array:lessorequal"
+                    }
+                  ]
+                }
+              ]
+            },
+            "required": true
+          },
+          {
+            "name": "sort",
+            "spec": [
+              {
+                "name": "key",
+                "type": "select",
+                "label": "Key",
+                "dynamic": true,
+                "options": [],
+                "required": true
+              },
+              {
+                "name": "order",
+                "type": "select",
+                "label": "Order",
+                "options": [
+                  {
+                    "label": "Ascending",
+                    "value": 1
+                  },
+                  {
+                    "label": "Descending",
+                    "value": -1
+                  }
+                ],
+                "required": true
+              }
+            ],
+            "type": "array",
+            "label": "Sort"
+          },
+          {
+            "name": "mappAbleLimit",
+            "type": "uinteger",
+            "label": "Mappable Limit"
+          }
+        ],
+        "interface": [
+          {
+            "name": "__IMTLENGTH__",
+            "type": "uinteger",
+            "label": "Total number of bundles"
+          },
+          {
+            "name": "__IMTINDEX__",
+            "type": "uinteger",
+            "label": "Bundle order position"
+          },
+          {
+            "name": "key",
+            "type": "text",
+            "label": "Key"
+          },
+          {
+            "name": "data",
+            "spec": [
+              {
+                "help": "CNPJ do emitente da NF-e, armazenado como texto para preservar todos os dígitos.",
+                "name": "cnpj_emitente",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "XML integral da NF-e, armazenado sem transformação para auditoria e reprocessamento.",
+                "name": "xml_raw",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "Identificação da origem pela qual o documento foi recebido.",
+                "name": "origem",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "Data e hora em que o documento foi recebido na camada Bronze.",
+                "name": "received_at",
+                "type": "date",
+                "label": null,
+                "required": false
+              },
+              {
+                "help": "Indica se o registro da Bronze já foi processado pela camada Prata.",
+                "name": "processed",
+                "type": "boolean",
+                "label": null,
+                "default": false,
+                "required": false
+              },
+              {
+                "help": "Data e hora em que o registro foi processado pela camada Prata.",
+                "name": "processed_at",
+                "type": "date",
+                "label": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "chave_nfe",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "numero_nfe",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "serie_nfe",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "data_emissao",
+                "type": "date",
+                "label": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "cnpj_destinatario",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "nome_emitente",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "nome_destinatario",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "uf_emitente",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "uf_destinatario",
+                "type": "text",
+                "label": null
+              },
+              {
+                "help": "",
+                "name": "valor_total_nfe",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_produtos",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_icms",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_pis",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_cofins",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_ipi",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_cbs",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "valor_ibs",
+                "type": "number",
+                "label": null,
+                "default": null,
+                "required": false
+              },
+              {
+                "help": "",
+                "name": "itens",
+                "spec": {
+                  "name": "value",
+                  "spec": {
+                    "spec": [
+                      {
+                        "help": "",
+                        "name": "numero_item",
+                        "type": "number",
+                        "label": null,
+                        "default": null,
+                        "required": false
+                      },
+                      {
+                        "help": "",
+                        "name": "codigo_produto",
+                        "type": "text",
+                        "label": null
+                      },
+                      {
+                        "help": "",
+                        "name": "descricao",
+                        "type": "text",
+                        "label": null
+                      },
+                      {
+                        "help": "",
+                        "name": "ncm",
+                        "type": "text",
+                        "label": null
+                      },
+                      {
+                        "help": "",
+                        "name": "cfop",
+                        "type": "text",
+                        "label": null
+                      },
+                      {
+                        "help": "",
+                        "name": "quantidade",
+                        "type": "number",
+                        "label": null,
+                        "default": null,
+                        "required": false
+                      },
+                      {
+                        "help": "",
+                        "name": "valor_unitario",
+                        "type": "number",
+                        "label": null,
+                        "default": null,
+                        "required": false
+                      },
+                      {
+                        "help": "",
+                        "name": "valor_total_item",
+                        "type": "number",
+                        "label": null,
+                        "default": null,
+                        "required": false
+                      }
+                    ],
+                    "type": "collection",
+                    "required": false
+                  },
+                  "type": "array",
+                  "label": "Value",
+                  "required": false
+                },
+                "type": "array",
+                "label": null,
+                "required": false
+              }
+            ],
+            "type": "collection",
+            "label": "Record"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "builtin:BasicFeeder",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "array": "{{1.data.itens}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2138,
+          "y": 487,
+          "name": "SEPARA ITENS DA NFE PARA OURO"
+        },
+        "setupValidation": {
+          "result": {
+            "valid": true,
+            "fields": []
+          },
+          "version": 1,
+          "configuration": "4ca511b6232d4607"
+        },
+        "restore": {
+          "expect": {
+            "array": {
+              "mode": "edit"
+            }
+          }
+        },
+        "expect": [
+          {
+            "mode": "edit",
+            "name": "array",
+            "spec": [],
+            "type": "array",
+            "label": "Array"
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "module": "util:SetVariable2",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "name": "item_ouro",
+        "scope": "roundtrip",
+        "value": "{{`2`}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2373,
+          "y": 223,
+          "name": "PREPARA ITEM PARA CAMADA OURO"
+        },
+        "setupValidation": {
+          "result": {
+            "valid": true,
+            "fields": []
+          },
+          "version": 1,
+          "configuration": "10cc5a1024321c6c"
+        },
+        "restore": {
+          "expect": {
+            "scope": {
+              "label": "One cycle"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "name",
+            "type": "text",
+            "label": "Variable name",
+            "required": true
+          },
+          {
+            "name": "scope",
+            "type": "select",
+            "label": "Variable lifetime",
+            "required": true,
+            "validate": {
+              "enum": [
+                "roundtrip",
+                "execution"
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "type": "any",
+            "label": "Variable value"
+          }
+        ],
+        "interface": [
+          {
+            "name": "item_ouro",
+            "type": "any",
+            "label": "item_ouro"
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "module": "http:MakeRequest",
+      "version": 4,
+      "parameters": {
+        "authenticationType": "apiKey",
+        "tlsType": "",
+        "apiKeyKeychain": 0
+      },
+      "mapper": {
+        "url": "https://SEU-PROJETO.supabase.co/rest/v1/ouro_nfe_consultoria",
+        "method": "post",
+        "headers": [
+          {
+            "name": "Prefer",
+            "value": "resolution=merge-duplicates,return=representation"
+          }
+        ],
+        "queryParameters": [
+          {
+            "name": "on_conflict",
+            "value": "chave_nfe,codigo_produto"
+          }
+        ],
+        "contentType": "json",
+        "parseResponse": true,
+        "stopOnHttpError": true,
+        "timeout": "40",
+        "allowRedirects": true,
+        "shareCookies": false,
+        "requestCompressedContent": true,
+        "inputMethod": "jsonString",
+        "jsonStringBodyContent": "{\r\n  \"chave_nfe\": \"{{1.data.chave_nfe}}\",\r\n  \"data_emissao\": \"{{1.data.data_emissao}}\",\r\n  \"ano\": {{formatDate(1.data.data_emissao; \"yyyy\")}},\r\n  \"mes\": {{formatDate(1.data.data_emissao; \"M\")}},\r\n  \"periodo\": \"{{formatDate(1.data.data_emissao; \"yyyy-MM\")}}\",\r\n  \"codigo_produto\": \"{{2.value[].codigo_produto}}\",\r\n  \"descricao_produto\": \"{{2.value[].descricao}}\",\r\n  \"ncm\": \"{{2.value[].ncm}}\",\r\n  \"cfop\": \"{{2.value[].cfop}}\",\r\n  \"quantidade_vendida\": {{2.value[].quantidade}},\r\n  \"valor_unitario\": {{2.value[].valor_unitario}},\r\n  \"faturamento_produto\": {{2.value[].valor_total_item}},\r\n  \"faturamento_nfe\": {{1.data.valor_total_nfe}},\r\n  \"nome_emitente\": \"{{1.data.nome_emitente}}\",\r\n  \"nome_destinatario\": \"{{1.data.nome_destinatario}}\"\r\n}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2661,
+          "y": 433,
+          "name": "GRAVA ITEM NA CAMADA OURO - SUPABASE"
+        },
+        "setupValidation": {
+          "version": 1,
+          "configuration": "52defa3c25f05167",
+          "result": {
+            "valid": true,
+            "fields": []
+          }
+        },
+        "restore": {
+          "parameters": {
+            "authenticationType": {
+              "label": "API keyUse when the service requires an API key in the header or query parameters."
+            },
+            "tlsType": {
+              "label": "Empty"
+            },
+            "apiKeyKeychain": {
+              "label": "CONFIGURAR_CREDENCIAL_SUPABASE_NO_MAKE"
+            }
+          },
+          "expect": {
+            "method": {
+              "mode": "chose",
+              "label": "POST"
+            },
+            "headers": {
+              "mode": "chose",
+              "items": [
+                null
+              ]
+            },
+            "queryParameters": {
+              "mode": "chose",
+              "items": [
+                null
+              ]
+            },
+            "contentType": {
+              "label": "application/jsonEnter data in the JSON format, as a string or using a data structure."
+            },
+            "parseResponse": {
+              "mode": "chose"
+            },
+            "stopOnHttpError": {
+              "mode": "chose"
+            },
+            "allowRedirects": {
+              "mode": "chose"
+            },
+            "shareCookies": {
+              "mode": "chose"
+            },
+            "requestCompressedContent": {
+              "mode": "chose"
+            },
+            "inputMethod": {
+              "label": "JSON stringEnter the JSON body as a raw text string. If values contain JSON reserved characters, you must escape them manually."
+            },
+            "paginationType": {
+              "label": "Empty"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "authenticationType",
+            "type": "select",
+            "label": "Authentication type",
+            "required": true,
+            "validate": {
+              "enum": [
+                "noAuth",
+                "apiKey",
+                "basicAuth",
+                "oAuth"
+              ]
+            }
+          },
+          {
+            "name": "tlsType",
+            "type": "select",
+            "label": "Transport layer security (TLS)",
+            "validate": {
+              "enum": [
+                "mTls",
+                "tls"
+              ]
+            }
+          },
+          {
+            "name": "proxyKeychain",
+            "type": "keychain:proxy",
+            "label": "Proxy"
+          },
+          {
+            "name": "apiKeyKeychain",
+            "type": "keychain:apikeyauth",
+            "label": "Credentials",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "url",
+            "type": "url",
+            "label": "URL",
+            "required": true
+          },
+          {
+            "name": "method",
+            "type": "select",
+            "label": "Method",
+            "required": true,
+            "validate": {
+              "enum": [
+                "get",
+                "head",
+                "post",
+                "put",
+                "patch",
+                "delete",
+                "options"
+              ]
+            }
+          },
+          {
+            "name": "headers",
+            "type": "array",
+            "label": "Headers",
+            "spec": {
+              "name": "value",
+              "label": "Header",
+              "type": "collection",
+              "spec": [
+                {
+                  "name": "name",
+                  "label": "Name",
+                  "type": "text",
+                  "required": true,
+                  "validate": {
+                    "pattern": "^[-!#$%&'*+.^_`|~0-9A-Za-z]+$"
+                  }
+                },
+                {
+                  "name": "value",
+                  "label": "Value",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          {
+            "name": "queryParameters",
+            "type": "array",
+            "label": "Query parameters",
+            "spec": {
+              "name": "value",
+              "label": "Parameter",
+              "type": "collection",
+              "spec": [
+                {
+                  "name": "name",
+                  "label": "Name",
+                  "type": "text",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "label": "Value",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          {
+            "name": "contentType",
+            "type": "select",
+            "label": "Body content type",
+            "validate": {
+              "enum": [
+                "json",
+                "multipart",
+                "urlEncoded",
+                "custom"
+              ]
+            }
+          },
+          {
+            "name": "parseResponse",
+            "type": "boolean",
+            "label": "Parse response",
+            "required": true
+          },
+          {
+            "name": "stopOnHttpError",
+            "type": "boolean",
+            "label": "Return error if HTTP request fails",
+            "required": true
+          },
+          {
+            "name": "timeout",
+            "type": "uinteger",
+            "label": "Timeout",
+            "validate": {
+              "min": 1,
+              "max": 300
+            }
+          },
+          {
+            "name": "allowRedirects",
+            "type": "boolean",
+            "label": "Allow redirects",
+            "required": true
+          },
+          {
+            "name": "shareCookies",
+            "type": "boolean",
+            "label": "Share cookies with other HTTP modules",
+            "required": true
+          },
+          {
+            "name": "requestCompressedContent",
+            "type": "boolean",
+            "label": "Request compressed content",
+            "required": true
+          },
+          {
+            "name": "inputMethod",
+            "type": "select",
+            "label": "Body input method",
+            "required": true,
+            "validate": {
+              "enum": [
+                "dataStructure",
+                "jsonString"
+              ]
+            }
+          },
+          {
+            "name": "jsonStringBodyContent",
+            "type": "text",
+            "label": "Body content",
+            "required": true
+          },
+          {
+            "name": "paginationType",
+            "type": "select",
+            "label": "Pagination type",
+            "validate": {
+              "enum": [
+                "offsetBased",
+                "pageBased",
+                "urlBased",
+                "tokenBased"
+              ]
+            }
+          }
+        ],
+        "interface": [
+          {
+            "name": "data",
+            "label": "Data",
+            "type": "any"
+          },
+          {
+            "name": "statusCode",
+            "label": "Status Code",
+            "type": "number"
+          },
+          {
+            "name": "headers",
+            "label": "Headers",
+            "type": "collection",
+            "spec": [
+              {
+                "name": "content-length",
+                "label": "Content-Length",
+                "type": "text"
+              },
+              {
+                "name": "content-encoding",
+                "label": "Content-Encoding",
+                "type": "text"
+              },
+              {
+                "name": "content-type",
+                "label": "Content-Type",
+                "type": "text"
+              },
+              {
+                "name": "server",
+                "label": "Server",
+                "type": "text"
+              },
+              {
+                "name": "cache-control",
+                "label": "Cache-Control",
+                "type": "text"
+              },
+              {
+                "name": "set-cookie",
+                "label": "Set-Cookie",
+                "type": "array",
+                "spec": {
+                  "type": "text"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "module": "builtin:BasicAggregator",
+      "version": 1,
+      "parameters": {
+        "feeder": 1
+      },
+      "filter": null,
+      "mapper": {
+        "statusCode": "{{7.statusCode}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 2870,
+          "y": 238
+        },
+        "setupValidation": {
+          "version": 1,
+          "configuration": "c4b0e8252e8dd139",
+          "result": {
+            "valid": true,
+            "fields": []
+          }
+        },
+        "restore": {
+          "extra": {
+            "feeder": {
+              "label": "BUSCA DADOS PROCESSADOS DA PRATA - Search records [1]"
+            },
+            "target": {
+              "label": "Custom"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 9,
+      "module": "http:MakeRequest",
+      "version": 4,
+      "parameters": {
+        "authenticationType": "apiKey",
+        "tlsType": "",
+        "apiKeyKeychain": 0
+      },
+      "mapper": {
+        "url": "https://SEU-PROJETO.supabase.co/rest/v1/ouro_nfe_consultoria",
+        "method": "get",
+        "queryParameters": [
+          {
+            "name": "select",
+            "value": "*"
+          }
+        ],
+        "parseResponse": true,
+        "stopOnHttpError": true,
+        "timeout": "40",
+        "allowRedirects": true,
+        "shareCookies": false,
+        "requestCompressedContent": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 3137,
+          "y": 438,
+          "name": "CONSULTA DADOS DA CAMADA OURO - SUPABASE"
+        },
+        "setupValidation": {
+          "version": 1,
+          "configuration": "dfec0f0d17c1d6bc",
+          "result": {
+            "valid": true,
+            "fields": []
+          }
+        },
+        "restore": {
+          "parameters": {
+            "authenticationType": {
+              "label": "API keyUse when the service requires an API key in the header or query parameters."
+            },
+            "tlsType": {
+              "label": "Empty"
+            },
+            "apiKeyKeychain": {
+              "label": "CONFIGURAR_CREDENCIAL_SUPABASE_NO_MAKE"
+            }
+          },
+          "expect": {
+            "method": {
+              "mode": "chose",
+              "label": "GET"
+            },
+            "headers": {
+              "mode": "chose"
+            },
+            "queryParameters": {
+              "mode": "chose",
+              "items": [
+                null
+              ]
+            },
+            "contentType": {
+              "label": "Empty"
+            },
+            "parseResponse": {
+              "mode": "chose"
+            },
+            "stopOnHttpError": {
+              "mode": "chose"
+            },
+            "allowRedirects": {
+              "mode": "chose"
+            },
+            "shareCookies": {
+              "mode": "chose"
+            },
+            "requestCompressedContent": {
+              "mode": "chose"
+            },
+            "paginationType": {
+              "label": "Empty"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "authenticationType",
+            "type": "select",
+            "label": "Authentication type",
+            "required": true,
+            "validate": {
+              "enum": [
+                "noAuth",
+                "apiKey",
+                "basicAuth",
+                "oAuth"
+              ]
+            }
+          },
+          {
+            "name": "tlsType",
+            "type": "select",
+            "label": "Transport layer security (TLS)",
+            "validate": {
+              "enum": [
+                "mTls",
+                "tls"
+              ]
+            }
+          },
+          {
+            "name": "proxyKeychain",
+            "type": "keychain:proxy",
+            "label": "Proxy"
+          },
+          {
+            "name": "apiKeyKeychain",
+            "type": "keychain:apikeyauth",
+            "label": "Credentials",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "url",
+            "type": "url",
+            "label": "URL",
+            "required": true
+          },
+          {
+            "name": "method",
+            "type": "select",
+            "label": "Method",
+            "required": true,
+            "validate": {
+              "enum": [
+                "get",
+                "head",
+                "post",
+                "put",
+                "patch",
+                "delete",
+                "options"
+              ]
+            }
+          },
+          {
+            "name": "headers",
+            "type": "array",
+            "label": "Headers",
+            "spec": {
+              "name": "value",
+              "label": "Header",
+              "type": "collection",
+              "spec": [
+                {
+                  "name": "name",
+                  "label": "Name",
+                  "type": "text",
+                  "required": true,
+                  "validate": {
+                    "pattern": "^[-!#$%&'*+.^_`|~0-9A-Za-z]+$"
+                  }
+                },
+                {
+                  "name": "value",
+                  "label": "Value",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          {
+            "name": "queryParameters",
+            "type": "array",
+            "label": "Query parameters",
+            "spec": {
+              "name": "value",
+              "label": "Parameter",
+              "type": "collection",
+              "spec": [
+                {
+                  "name": "name",
+                  "label": "Name",
+                  "type": "text",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "label": "Value",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          {
+            "name": "contentType",
+            "type": "select",
+            "label": "Body content type",
+            "validate": {
+              "enum": [
+                "json",
+                "multipart",
+                "urlEncoded",
+                "custom"
+              ]
+            }
+          },
+          {
+            "name": "parseResponse",
+            "type": "boolean",
+            "label": "Parse response",
+            "required": true
+          },
+          {
+            "name": "stopOnHttpError",
+            "type": "boolean",
+            "label": "Return error if HTTP request fails",
+            "required": true
+          },
+          {
+            "name": "timeout",
+            "type": "uinteger",
+            "label": "Timeout",
+            "validate": {
+              "min": 1,
+              "max": 300
+            }
+          },
+          {
+            "name": "allowRedirects",
+            "type": "boolean",
+            "label": "Allow redirects",
+            "required": true
+          },
+          {
+            "name": "shareCookies",
+            "type": "boolean",
+            "label": "Share cookies with other HTTP modules",
+            "required": true
+          },
+          {
+            "name": "requestCompressedContent",
+            "type": "boolean",
+            "label": "Request compressed content",
+            "required": true
+          },
+          {
+            "name": "paginationType",
+            "type": "select",
+            "label": "Pagination type",
+            "validate": {
+              "enum": [
+                "offsetBased",
+                "pageBased",
+                "urlBased",
+                "tokenBased"
+              ]
+            }
+          }
+        ],
+        "interface": [
+          {
+            "name": "data",
+            "label": "Data",
+            "type": "any"
+          },
+          {
+            "name": "statusCode",
+            "label": "Status Code",
+            "type": "number"
+          },
+          {
+            "name": "headers",
+            "label": "Headers",
+            "type": "collection",
+            "spec": [
+              {
+                "name": "content-length",
+                "label": "Content-Length",
+                "type": "text"
+              },
+              {
+                "name": "content-encoding",
+                "label": "Content-Encoding",
+                "type": "text"
+              },
+              {
+                "name": "content-type",
+                "label": "Content-Type",
+                "type": "text"
+              },
+              {
+                "name": "server",
+                "label": "Server",
+                "type": "text"
+              },
+              {
+                "name": "cache-control",
+                "label": "Cache-Control",
+                "type": "text"
+              },
+              {
+                "name": "set-cookie",
+                "label": "Set-Cookie",
+                "type": "array",
+                "spec": {
+                  "type": "text"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "module": "ai-local-agent:RunLocalAIAgent",
+      "version": 0,
+      "parameters": {
+        "makeConnectionId": 0
+      },
+      "mapper": {
+        "defaultModel": "medium",
+        "tokenLimit": "50",
+        "promptCaching": "none",
+        "fallbackEnabled": false,
+        "systemPrompt": "Você é um Agente de IA especializado em análise gerencial de vendas a partir da Camada Ouro de dados de NF-e.\r\n\r\nSua função é analisar exclusivamente os dados estruturados recebidos da Camada Ouro e gerar insights objetivos para apoio à tomada de decisão.\r\n\r\nAnalise, quando disponíveis:\r\n- produto e descrição;\r\n- NCM e CFOP;\r\n- quantidade vendida;\r\n- valor unitário;\r\n- faturamento do produto;\r\n- faturamento da NF-e;\r\n- período;\r\n- emitente e destinatário.\r\n\r\nIdentifique informações relevantes como faturamento, produtos vendidos, quantidades e possíveis destaques comerciais.\r\n\r\nNão invente dados.\r\nNão utilize informações que não estejam presentes na entrada recebida.\r\nQuando não houver informação suficiente para uma conclusão, informe claramente essa limitação.\r\n\r\nResponda de forma objetiva, profissional e estruturada, adequada a uma consultoria contábil e gerencial.",
+        "message": "Analise de forma consolidada todos os registros consultados na Camada Ouro.\r\n\r\nConsidere o conjunto completo dos dados para:\r\n- calcular o faturamento total;\r\n- calcular a quantidade total vendida;\r\n- identificar o faturamento por produto;\r\n- calcular o faturamento médio por unidade;\r\n- identificar os produtos de maior faturamento e maior quantidade;\r\n- identificar a distribuição do faturamento por destinatário;\r\n- destacar inconsistências ou limitações encontradas nos dados.\r\n\r\nNão invente informações. Quando os dados não forem suficientes para uma conclusão, informe claramente a limitação.\r\n\r\nDados consultados na Camada Ouro: {{9.data}}",
+        "files": [
+          {
+            "fileName": "",
+            "data": ""
+          }
+        ],
+        "threadId": "",
+        "modelConfig": {
+          "recursionLimit": "300",
+          "iterationsFromHistoryCount": "10",
+          "timeout": ""
+        },
+        "outputType": "text"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3364,
+          "y": 224,
+          "name": "ANALISA DADOS DA CAMADA OURO - AGENTE IA"
+        },
+        "setupValidation": {
+          "version": 1,
+          "configuration": "629c6871b596dcd0",
+          "result": {
+            "valid": true,
+            "fields": []
+          }
+        },
+        "restore": {
+          "parameters": {
+            "makeConnectionId": {
+              "label": "CONFIGURAR_PROVEDOR_IA_NO_MAKE",
+              "data": {
+                "scoped": "true",
+                "connection": "ai-provider"
+              }
+            }
+          },
+          "expect": {
+            "defaultModel": {
+              "mode": "chose",
+              "label": "MediumModel: gpt-5-nano. Reasoning: low. A balanced, quick choice for clearly defined tasks needing reliable answers rather than deep analysis"
+            },
+            "promptCaching": {
+              "label": "Automatic (always on)"
+            },
+            "systemPrompt": {
+              "collapsed": true
+            },
+            "files": {
+              "mode": "chose",
+              "items": [
+                null
+              ]
+            },
+            "outputType": {
+              "label": "Text"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "makeConnectionId",
+            "type": "account:ai-provider,openai-gpt-3,anthropic-claude,gemini-ai-q9zyjp,ai-agent-foundry-openai,ai-agent-foundry-non-openai,mistral-ai,cohere,groq,ai-agent-xai,amazon-bedrock,ai-agent-openai-compatible",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "defaultModel",
+            "type": "select",
+            "label": "Model",
+            "required": true
+          },
+          {
+            "name": "tokenLimit",
+            "type": "number",
+            "label": "Maximum output length (%)",
+            "validate": {
+              "min": 20,
+              "max": 100
+            }
+          },
+          {
+            "name": "promptCaching",
+            "type": "select",
+            "label": "Prompt caching",
+            "validate": {
+              "enum": [
+                "none"
+              ]
+            }
+          },
+          {
+            "name": "fallbackEnabled",
+            "type": "boolean",
+            "label": "Enable fallback connection",
+            "required": true
+          },
+          {
+            "name": "systemPrompt",
+            "type": "text",
+            "label": "Instructions"
+          },
+          {
+            "name": "message",
+            "type": "text",
+            "label": "Input",
+            "required": true
+          },
+          {
+            "name": "files",
+            "type": "array",
+            "label": "Input files",
+            "spec": [
+              {
+                "name": "fileName",
+                "type": "filename",
+                "label": "File name",
+                "semantic": "file:name"
+              },
+              {
+                "name": "data",
+                "type": "buffer",
+                "label": "Data",
+                "semantic": "file:data"
+              }
+            ]
+          },
+          {
+            "name": "threadId",
+            "type": "text",
+            "label": "Conversation ID",
+            "validate": {
+              "max": 256
+            }
+          },
+          {
+            "name": "modelConfig",
+            "type": "collection",
+            "label": "Model configuration",
+            "spec": [
+              {
+                "name": "recursionLimit",
+                "type": "number",
+                "label": "Steps per agent call"
+              },
+              {
+                "name": "iterationsFromHistoryCount",
+                "type": "number",
+                "label": "Maximum conversation history"
+              },
+              {
+                "name": "timeout",
+                "type": "number",
+                "label": "Step timeout",
+                "validate": {
+                  "min": 120,
+                  "max": 600
+                }
+              }
+            ]
+          },
+          {
+            "name": "outputType",
+            "type": "select",
+            "label": "Response format",
+            "required": true,
+            "validate": {
+              "enum": [
+                "text",
+                "make-schema",
+                "udt-schema"
+              ]
+            }
+          }
+        ]
+      },
+      "tools": []
+    },
+    {
+      "id": 14,
+      "module": "google-docs:createADocument",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": 0
+      },
+      "mapper": {
+        "name": "DIAGNÓSTICO GERENCIAL - CAMADA OURO - AGENTE IA",
+        "content": "{{8.response}}",
+        "destination": "drive",
+        "header": false,
+        "footer": false,
+        "folderId": "/"
+      },
+      "metadata": {
+        "designer": {
+          "x": 3628,
+          "y": 380,
+          "name": "ENTREGA DIAGNÓSTICO FINAL - GOOGLE DOCS"
+        },
+        "setupValidation": {
+          "version": 1,
+          "configuration": "93e384719ec9a3b8",
+          "result": {
+            "valid": true,
+            "fields": []
+          }
+        },
+        "restore": {
+          "parameters": {
+            "__IMTCONN__": {
+              "label": "CONFIGURAR_CONEXAO_GOOGLE_NO_MAKE",
+              "data": {
+                "scoped": "true",
+                "connection": "google"
+              }
+            }
+          },
+          "expect": {
+            "destination": {
+              "label": "My Drive"
+            },
+            "folderId": {
+              "mode": "chose",
+              "path": [
+                "/"
+              ]
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:google",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "name",
+            "type": "text",
+            "label": "Name",
+            "required": true
+          },
+          {
+            "name": "content",
+            "type": "text",
+            "label": "Content",
+            "required": true
+          },
+          {
+            "name": "destination",
+            "type": "select",
+            "label": "Choose a Drive",
+            "required": true,
+            "validate": {
+              "enum": [
+                "drive",
+                "share",
+                "team"
+              ]
+            }
+          },
+          {
+            "name": "header",
+            "type": "boolean",
+            "label": "Insert a Header",
+            "required": true
+          },
+          {
+            "name": "footer",
+            "type": "boolean",
+            "label": "Insert a Footer",
+            "required": true
+          },
+          {
+            "name": "folderId",
+            "type": "folder",
+            "label": "New Document's Location",
+            "required": true
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us2.make.com",
+    "notes": []
+  }
+}
