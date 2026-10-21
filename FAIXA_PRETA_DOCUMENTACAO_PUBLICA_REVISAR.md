@@ -3,7 +3,7 @@
 # Consultoria Contábil com IA — Make + Supabase + Camada Ouro
 
 **RDD10+ Faixa Preta 2026/2 | Versão pública de referência — documentação técnica**  
-**Tipo:** Documentação de arquitetura Make.com | **Blueprint:** armazenado separadamente em repositório privado; não disponibilizado nesta página.  
+**Tipo:** Documentação de arquitetura Make.com | **Blueprint público V3:** disponível no repositório GitHub público, em versão anonimizada, separada do projeto original privado.  
 **Estado:** cenário desenvolvido para o TCC da Faixa Marrom; cópia de referência anonimizada. **Importação visual dos 8 módulos realizada no Make; salvamento bloqueado por ausência de Data Store válido. Não executado nesta cópia.**
 
 ## 1. Contexto e problema resolvido
@@ -68,7 +68,7 @@ Data Store SearchRecord **v1**; BasicFeeder **v1**; SetVariable2 **v1**; HTTP Ma
 **Não há medição de custo financeiro ou tempo médio de execução anexada a este artefato.** Para estimar, registre em um teste: quantidade de registros NF-e, itens por documento, operações/créditos Make consumidos, tokens de entrada e saída do modelo, custo do plano Supabase e armazenamento Google. Calcule `custo por execução = operações Make + custo IA + parcela de infraestrutura`; compare cenários de 10, 100 e 1.000 itens. A consulta `select=*` e a inclusão integral de `9.data` no prompt podem elevar custos e exceder contexto; imponha limites/paginação conforme o caso.
 
 ## 9. Demonstração e rastreabilidade
-**Documentação pública:** esta página é uma referência descritiva. O Blueprint permanece em repositório privado e não é disponibilizado por este link. O link da página não substitui a seleção do artefato na Biblioteca RDD10+. **Link público de demonstração do cenário Make:** não disponibilizado.  
+**Documentação pública:** esta página descreve a arquitetura e os pré-requisitos da cópia anonimizada. O Blueprint V3 está disponível no repositório público [RDD10 — Faixa Preta — Consultoria Contábil com IA](https://github.com/pricecontabilidade-eng/rdd10-faixa-preta-consultoria-contabil-ia-publico), junto do README e da documentação técnica V3. O projeto original permanece separado em repositório privado. O link do GitHub não substitui a seleção do artefato na Biblioteca RDD10+. **Link público de demonstração de execução do cenário Make:** não disponibilizado.  
 **Referência de origem:** TCC Faixa Marrom RDD10+ — Camada Ouro + Agente IA.  
 **Prova de execução:** o JSON demonstra configuração, **não comprova sozinho** que o cenário executou corretamente ou que os resultados são reais. Caso disponível, publique demonstração com dados sintéticos e sem credenciais.
 
@@ -76,7 +76,8 @@ Data Store SearchRecord **v1**; BasicFeeder **v1**; SetVariable2 **v1**; HTTP Ma
 - [x] JSON do Make presente e sintaticamente válido; 8 módulos preservados.
 - [x] A documentação registra a substituição de endereço de projeto e IDs de conexões na cópia de referência; o JSON requer revisão independente antes de qualquer divulgação.
 - [x] README com módulos, pré-requisitos, versões, permissões, custos e passos de importação.
-- [ ] Publicar esta documentação em página de acesso público e verificar o link em janela anônima.
+- [x] Repositório GitHub público com Blueprint V3, README e documentação técnica V3 disponibilizado; acesso público confirmado em janela anônima.
+- [ ] Atualizar esta documentação legada no GitHub e confirmar o conteúdo atualizado em janela anônima.
 - [ ] Confirmar tags **contabilidade, make, nfe, supabase** na Biblioteca.
 - [ ] Preencher **contexto_projeto** se a plataforma disponibilizar esse campo.
 - [x] Conferir importação visual dos 8 módulos no Make (realizada).
